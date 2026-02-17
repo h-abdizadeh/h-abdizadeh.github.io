@@ -1,0 +1,284 @@
+*:root {
+    --orange: #f26522;
+}
+
+
+body {
+    /*    background-color: black;*/
+}
+
+.text-orange {
+    color: var(--orange) !important;
+}
+
+.bg-orange {
+    background-color: var(--orange) !important;
+}
+
+.border-orange {
+    border-color: var(--orange) !important;
+}
+
+.aspect-1-1 {
+    aspect-ratio: 1/1;
+}
+
+.fs-120 {
+    font-size: 120pt;
+}
+
+.white-shadow {
+    box-shadow: 0 0 4px rgb(255 255 255 / 0.25)
+}
+/*logo motion*/
+.logo-motion {
+/*    background-color:black;*/
+/*    background-image: linear-gradient(90deg,transparent, black, black, black,transparent);*/
+/*    background-image: linear-gradient(90deg,var(--orange), black, black, black,var(--orange));*/
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+    .logo-motion .logo-box {
+        width: 400px;
+        height: 320px;
+/*        background-color: black;*/
+        position: absolute;
+        left: calc(50% - 200px);
+        top: -110px;
+        overflow: hidden;
+    }
+
+        .logo-motion .logo-box .logo-line {
+            width: 150px;
+            height: 65px;
+            border: 3px solid var(--orange);
+            position: absolute;
+            top: 156px;
+            left: 85px;
+            z-index: 0;
+            opacity: 0;
+            animation: opacity 1s 3s forwards;
+        }
+        /*arrow icon*/
+        .logo-motion .logo-box .logo-line span {
+            position:absolute;
+            top:-7px;
+            right:-17px;
+            color:var(--orange);
+            font-size:24pt;
+        }
+
+        .logo-motion .logo-box .temp {
+            margin-top: 133px;
+            margin-left: -100%;
+            display: inline-block;
+            background-color: white;
+            border: 3px solid black;
+            border-radius: 8px;
+            padding: 2px 5px;
+            font-size: 21pt;
+            line-height: 24px;
+            color: gray;
+            font-family: Consolas;
+            position: relative;
+            z-index: 2;
+            animation: temp 2s forwards;
+        }
+
+            .logo-motion .logo-box .temp::before {
+                content: 'temp';
+            }
+
+            .logo-motion .logo-box .temp .t24 {
+                display: inline-block;
+                background-color: var(--orange);
+                border-radius: 5px;
+                padding: 5px;
+                aspect-ratio: 10/9;
+                color: white;
+                margin-left: 5px;
+                height: 100%;
+                text-align: center;
+                font-weight: bold;
+                opacity: 0;
+                animation: opacity 2s 1s forwards;
+            }
+
+                .logo-motion .logo-box .temp .t24::before {
+                    content: '24';
+                }
+
+        .logo-motion .logo-box .developer {
+            display: inline-block;
+            background-color: rgb(36, 36, 36);
+            margin-left: 100%;
+            margin-top: 5px;
+            line-height:50px;
+            font-size: 30pt;
+            color: white;
+            font-family: Consolas;
+            position: relative;
+            z-index: 1;
+            padding-left: 5px;
+            animation: developer 2s 1s forwards;
+        }
+
+/*            .logo-motion .logo-box .developer::before {
+                content: 'DEVELOPER';
+            }*/
+
+        .logo-motion .logo-box hr {
+            position: relative;
+            z-index: 3;
+            border: 1px solid white;
+            opacity: 1;
+            width: 60%;
+            margin: auto;
+            margin-top: 100%;
+            animation: hr 1s 2s forwards;
+        }
+
+        .logo-motion .logo-box .studio {
+            display: block;
+            text-align: center;
+            color: white;
+            font-family: Consolas;
+            font-size: 12pt;
+            margin-top: 4px;
+            letter-spacing: 1.5px;
+        }
+
+            .logo-motion .logo-box .studio::before {
+                content: '';
+                animation: typing 3s 3s forwards;
+            }
+
+
+@keyframes temp {
+    from {
+        margin-left: -100%;
+    }
+
+    to {
+        margin-left: 98px;
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes developer {
+    from {
+        margin-left: 100%;
+    }
+
+    to {
+        margin-left: 107px;
+    }
+}
+
+@keyframes hr {
+    from {
+        margin-top: 100%;
+    }
+
+    to {
+        margin-top: 5px;
+    }
+}
+
+
+@keyframes typing {
+    0% {
+        content: '';
+    }
+
+    5% {
+        content: 'a';
+    }
+
+    10% {
+        content: 'a p';
+    }
+
+    15% {
+        content: 'a pe';
+    }
+
+    20% {
+        content: 'a per';
+    }
+
+    25% {
+        content: 'a pers';
+    }
+
+    30% {
+        content: 'a perso';
+    }
+
+    35% {
+        content: 'a person';
+    }
+
+    40% {
+        content: 'a persona';
+    }
+
+    45% {
+        content: 'a personal';
+    }
+
+    50% {
+        content: 'a personal g';
+    }
+
+    55% {
+        content: 'a personal ga';
+    }
+
+    60% {
+        content: 'a personal gam';
+    }
+
+    65% {
+        content: 'a personal game';
+    }
+
+    70% {
+        content: 'a personal game s';
+    }
+
+    75% {
+        content: 'a personal game st';
+    }
+
+    80% {
+        content: 'a personal game stu';
+    }
+
+    85% {
+        content: 'a personal game stud';
+    }
+
+    90% {
+        content: 'a personal game studi';
+    }
+
+    95% {
+        content: 'a personal game studio';
+    }
+
+    100% {
+        content: 'a personal game studio';
+    }
+}

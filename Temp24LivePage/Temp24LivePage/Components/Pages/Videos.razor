@@ -1,0 +1,72 @@
+﻿<h5 class="text-white text-center p-2">
+    <span class="bi bi-dice-6 text-orange ps-3 me-1"></span>
+    <span class="text-orange">Videos |</span> ویدئوها
+    <span class="bi bi-caret-down-fill"></span>
+
+</h5>
+<hr class="border border-1 border-light w-50 m-auto mb-3" />
+<div class="col-12 m-auto p-1 row">
+    @{
+        if (_Videos is not null)
+            foreach (var video in _Videos)
+            {
+                <div class="col-md-4 col-sm-6 col-12 p-1">
+                    <div class="col-12 rounded-3 p-2 bg-black bg-opacity-25 white-shadow row m-auto">
+                        <div class="col-4 p-0 text-center">
+                            <img src="/img/videos/@video.cover" alt="@video.titleEn" class="w-100 rounded-3 mt-2" />
+
+                        </div>
+
+                        <div class="col-8 text-center">
+                            <h6 class=" text-orange text-center mt-2">
+                                @video.titleEn
+                                <span class="d-block text-white mt-2">@video.titleFa</span>
+                            </h6>
+                            <h6 class=" text-orange text-center mt-3">
+                                @video.desEn | <span class="text-white">@video.desFa</span>
+                            </h6>
+
+
+
+
+                        </div>
+                        <hr class="border border-1 border-light mb-2" />
+                        <div class="text-center">
+
+                            @{
+                                foreach (var item in video.videoLinks.links)
+                                {
+                                    <a href="@item.url" class="btn btn-dark rounded-5">
+                                        <span class="bi bi-eye text-orange me-2" title="download دانلود">
+                                        </span>@item.title
+                                        <span class="bi bi-caret-right-fill"></span>
+
+                                    </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                   
+                </div>
+            }
+    }
+</div>
+@inject HttpClient Http
+@code {
+    // [Parameter] public List<Video>? _Videos { get; set; }
+    List<Video>? _Videos { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadVideosDataAsync();
+    }
+    public async Task LoadVideosDataAsync()
+    {
+        using var videosXml = await Http.GetStreamAsync("data/VideosData.xml");
+        var videosSerialize = new XmlSerializer(typeof(VideosData));
+        var videosData = (VideosData)videosSerialize.Deserialize(videosXml);
+        _Videos = videosData.VideosList;
+
+    }
+
+}

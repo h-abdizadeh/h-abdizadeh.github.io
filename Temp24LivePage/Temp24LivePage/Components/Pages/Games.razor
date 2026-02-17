@@ -1,0 +1,109 @@
+﻿@using Temp24LivePage.XmlDataModels
+<div class="col-12 rounded-3 m-auto p-1 row">
+    @{
+        if (_Games is not null)
+            for (int i = -1; i < _Games?.Count; i++)
+            {
+                if (i is -1)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-2 aspect-1-1">
+                        <section class="pb-2 h-75">
+                            <div class=" rounded-3 pt-md-5 pt-4 bg-black bg-opacity-25 white-shadow h-100">
+                                <LogoMotion />
+                            </div>
+                        </section>
+                        <section class="pt-3 h-25">
+                            <div class=" rounded-3 bg-black bg-opacity-25 h-100 white-shadow text-center align-content-center">
+                                <h4 class="text-white">
+                                    <span class="bi bi-dice-5 text-orange ps-3 me-1"> Games |</span> بازی ها
+                                    <span class="bi bi-caret-right-fill d-md-inline-block d-sm-inline-block d-none"></span>
+                                    <span class="bi bi-caret-down-fill d-md-none d-sm-none d-inline-block"></span>
+                                </h4>
+                            </div>
+                        </section>
+
+
+
+
+                    </div>
+
+                    continue;
+                }
+                var game = _Games[i];
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 p-2">
+                    <div class=" rounded-3 p-2 bg-black bg-opacity-25 white-shadow">
+                        <h5 class=" text-orange text-center mt-2">
+                            @game.titleEn | <span class="text-white">@game.titleFa</span>
+                        </h5>
+                        <div id=@("carouselExample"+game.id) class="carousel slide aspect-1-1 mt-3">
+                            <div class="carousel-inner">
+                                <div class="carousel-item aspect-1-1 align-content-center text-center active">
+                                    <img src="img/games/@game.icon" alt="@game.titleEn" class="d-block w-75 m-auto">                     
+                                </div>
+
+                                @{
+                                    foreach (var slide in game.gameSlides.slides)
+                                    {
+                                        var fitMode = slide.aspect.Contains("landscape") ? "w-100" : "h-100";
+                                        <div class="carousel-item aspect-1-1 align-content-center">
+                                            <img src="img/slides/games/@game.titleEn/@slide.img" alt="@slide.alt" class="d-block m-auto rounded-3 @fitMode">
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+                            <div class="text-center pt-1">
+                                <span class="m-auto text-white p-0 pe-2 ps-2 border-top border-orange">
+                                    <span class="bi bi-camera"></span> @game.gameSlides.slides.Count
+                                </span>
+                            </div>
+                            
+                            <button class="carousel-control-prev" type="button" data-bs-target=@("#carouselExample"+game.id) data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target=@("#carouselExample"+game.id) data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="text-center mt-2">
+
+                            @{
+
+                                foreach (var item in game.gameLinks.links)
+                                {
+                                    <a href="@item.url" class="btn btn-dark rounded-5 m-1">
+                                        <span class="bi bi-download text-orange me-2" title="download دانلود"></span>@item.title
+                                    </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            }
+        // }
+
+    }
+</div>
+@inject HttpClient Http
+@code {
+    // [Parameter] public List<Game>? _Games { get; set; }
+    List<Game>? _Games;
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadGamesDataAsync();
+    }
+    public async Task LoadGamesDataAsync()
+    {
+        using var gamesXml = await Http.GetStreamAsync("data/GamesData.xml");
+
+        var gamesSerialize = new XmlSerializer(typeof(GamesData));
+        var gamesData = (GamesData)gamesSerialize.Deserialize(gamesXml);
+        _Games = gamesData.GamesList;
+
+
+    }
+
+}

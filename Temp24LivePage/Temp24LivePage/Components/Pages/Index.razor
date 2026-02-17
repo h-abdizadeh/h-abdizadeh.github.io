@@ -1,0 +1,51 @@
+﻿@page "/"
+<PageTitle>temp24Developer | Home</PageTitle>
+
+@* games *@
+<section id="games" class="col-lg-10 col-md-11 col-sm-12 col-12 m-auto p-2 mt-md-5 mt-3">
+        @* <Games _Games="_games" /> *@
+        <Games />
+</section>
+
+@* videos *@
+<section id="videos" class="col-lg-10 col-md-11 col-sm-12 col-12 m-auto p-2 mt-5">
+        @* <Videos _Videos="_videos" /> *@
+        <Videos />
+</section>
+
+@* @inject HttpClient Http; *@
+@code {
+
+    /* work when use:
+    * <Videos _Videos="_videos" /> or
+    * <Games _Games="_games" /> */
+
+    // GamesData gamesData;
+    // VideosData videosData;
+    // private List<Game>? _games { get; set; }
+    // private List<Video>? _videos { get; set; }
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await LoadGamesDataAsync();
+    //     await LoadVideosDataAsync();
+    // }
+
+    // public async Task LoadGamesDataAsync()
+    // {
+    //     using var gamesXml = await Http.GetStreamAsync("data/GamesData.xml");
+    //     var gamesSerialize = new XmlSerializer(typeof(GamesData));
+    //     gamesData = (GamesData)gamesSerialize.Deserialize(gamesXml);
+    //     _games = gamesData.GamesList;
+
+
+    // }
+    // public async Task LoadVideosDataAsync()
+    // {
+    //         using var videosXml = await Http.GetStreamAsync("data/VideosData.xml");
+    //         var videosSerialize = new XmlSerializer(typeof(VideosData));
+    //         videosData = (VideosData)videosSerialize.Deserialize(videosXml);
+    //         _videos = videosData.VideosList;
+    // }
+
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VideosData>
+	<video id="1" titleEn="Base Programing" titleFa="مباحث پایه برنامه نویسی" cover="base_vid_1.jpg" desEn="Parts 1-3" desFa="قسمت های 1-3">
+		<VideoLinks>
+			<link id="1" title="Youtube" url=""></link>
+		</VideoLinks>
+	</video>
+</VideosData>

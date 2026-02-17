@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GamesData>
+	<game id="1" titleEn="blocks" titleFa="بلاکز" icon="blocks.png">
+		<GameLinks>
+			<link id="1" title="کافه بازار" url="https://cafebazaar.ir/app/com.temp24DEVELOPER.blocks"></link>
+		</GameLinks>
+		<GameSlides>
+			<slide id="1" alt="" aspect="portrate" img="screenshot_1.png"></slide>
+			<slide id="2" alt="" aspect="portrate" img="screenshot_2.png"></slide>
+			<slide id="3" alt="" aspect="portrate" img="screenshot_3.png"></slide>
+		</GameSlides>
+	</game>
+	<game id="2" titleEn="hit the road" titleFa="بزن به جاده" icon="hitTheRoad.png">
+		<GameLinks>
+			<link id="1" title="کافه بازار" url="https://cafebazaar.ir/app/com.temp24DEVELOPER.blocks"></link>
+		</GameLinks>
+		<GameSlides>
+			<slide id="1" alt="" aspect="landscape" img="screenshot_1.png"></slide>
+			<slide id="2" alt="" aspect="landscape" img="screenshot_2.png"></slide>
+		</GameSlides>
+	</game>
+</GamesData>
